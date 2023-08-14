@@ -72,7 +72,7 @@ pipelines:
               tasks:
                 - script: |
                     set -e
-                    helm package --version "$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')" --app-version $GO_PIPELINE_LABEL ./helm-charts/${CHART_NAME}
+                    helm package --version "$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')" ./helm-charts/${CHART_NAME}
 
                     bash ./upload-chart.sh minio-*.tgz
 
