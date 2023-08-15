@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CHART_FILENAME="${1}"
-FOLDER_NAME="$($CHART_FILENAME | rev | cut -d'-' -f2- | rev)"
+FOLDER_NAME="$(echo $CHART_FILENAME | rev | cut -d'-' -f2- | rev)"
 
 CONTENT="$(cat $CHART_FILENAME | base64)"
 
