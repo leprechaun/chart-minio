@@ -64,7 +64,7 @@ pipelines:
     environment_variables:
       CHART_NAME: minio
     secure_variables:
-      GITHUB_TOKEN: AES:/zsyBzdG0/oKWsMrct1OcA==:j2YaUraAIECGf/HCxG0RO137o50NDWLFUMWnLCFrKFgV0iVcKDQihC8OW++3BliELLEcFapSo72dy5HzWkvW1pFBFXgjASmr1n4AeMWz5H0m9agCQs9qfzDdIonh+EnM
+      GITHUB_TOKEN: AES:C/Kze4KS3Nj7IIqRJcP7HQ==:5oIutnej0aAQKMna7JzuFD3vaEs/2nwjT+JmJG6b4CPcpwssLOFVotNMatN7VIaCNcYlE7XnmVG/kERl3CTATi314X8ZAYymNm2LvqUk2hWwj0HgEthbw/4FdIeZ57uF
     stages:
       - package:
           jobs:
