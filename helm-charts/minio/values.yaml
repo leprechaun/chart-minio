@@ -8,7 +8,7 @@ image:
   repository: pgsty/silo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "RELEASE.2026-09-03T13-18-01Z-arm64"
+  tag: "RELEASE.2026-09-03T13-18-01Z-distroless"
 
 imagePullSecrets: []
 nameOverride: ""

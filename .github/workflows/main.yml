@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Display Go version
+        run: go version
+
+      - name: Helm tool installer
+        uses: Azure/setup-helm@v4
+
+      - name: Lint
+        run: |
+          helm lint ./helm-charts/minio/
+
+      - name: Package
+        run: |
+          helm package --version 0.2.${{ github.run_number }} ./helm-charts/minio/
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: chart
+          path: minio-0.2.${{ github.run_number }}.tgz
+
+      - name: Push Chart Artifact
+        uses: dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: minio-0.2.${{ github.run_number }}.tgz
+          destination_repo: 'leprechaun/leprechaun.github.io'
+          destination_folder: 'minio'
+          destination_branch: master
+          user_email: 'leprechaun-automation@github.com'
+          user_name: 'leprechaun-automation'
+          commit_message: Automated commit
